@@ -6,48 +6,46 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
 
 // Create lights
-const light = new THREE.AmbientLight(0x404040, 5);
-scene.add(light);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-directionalLight.position.set(1, 1, 1).normalize();
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 5, 5).normalize();
 scene.add(directionalLight);
 
-// Create geometry
+// Create cube
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x007bff });
+const material = new THREE.MeshPhongMaterial({ color: 0x007bff });
 const cube = new THREE.Mesh(geometry, material);
+cube.position.set(-2, 0, -5);
 scene.add(cube);
 
-// Robot and abstract models (example using a simple sphere to represent abstract model)
+// Create sphere (abstract model)
 const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
-const sphereMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+const sphereMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-sphere.position.set(-3, 0, 0);
+sphere.position.set(2, 0, -5);
 scene.add(sphere);
 
-// Animation
-cube.position.z = -5;
-sphere.position.z = -5;
-cube.rotation.y = 0.5;
+// Create robot-like model
+const robotGeometry = new THREE.CylinderGeometry(0.5, 0.5, 2, 32);
+const robotMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+const robot = new THREE.Mesh(robotGeometry, robotMaterial);
+robot.position.set(0, 1, -8);
+scene.add(robot);
 
+// Animation loop
 function animate() {
     requestAnimationFrame(animate);
 
-    // Rotate the cube
+    // Rotate the cube and sphere
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
+    sphere.rotation.x += 0.01;
+    sphere.rotation.y += 0.01;
 
-    // Hover effect
-    document.querySelectorAll('li').forEach((item, index) => {
-        item.onmouseover = () => {
-            item.style.backgroundColor = '#007bff';
-            item.style.color = 'white';
-        };
-        item.onmouseout = () => {
-            item.style.backgroundColor = '#e0e0e0';
-            item.style.color = '#333';
-        };
-    });
+    // Robot bobbing animation
+    robot.position.y = 1 + Math.sin(Date.now() * 0.001) * 0.5;
 
     renderer.render(scene, camera);
 }
