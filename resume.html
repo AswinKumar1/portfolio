@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your common CSS file -->
+    <style>
+        /* Ensure the iframe fits the viewport and is centered */
+        .pdf-container {
+            width: 100%;
+            height: calc(100vh - 60px); /* Adjust height based on header/footer height */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Resume</h1>
+    </header>
+    <section>
+        <iframe class="pdf-container" src="Aswin_Kumar_resume.pdf" type="application/pdf"></iframe>
+    </section>
+    <footer>
+        <a href="index.html" class="button primary">Back to Home</a>
+    </footer>
+</body>
+</html>
