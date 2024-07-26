@@ -2,7 +2,7 @@
 
 ## Overview
 
-This portfolio was created as part of the Headstarter SWE Fellowship 2024 week-1 challenge of creating a personal portfolio. It showcases my skills, projects, and experiences in a sleek, modern, and responsive design.
+This portfolio was created as part of the Headstarter SWE Fellowship 2024 week-1 challenge of creating a personal portfolio. It showcases my skills, projects, and experiences in a modern, and responsive design. 
 
 ## About Me
 
