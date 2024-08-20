@@ -707,113 +707,105 @@ input, select, textarea {
 /* Projects */
 
 	.projects {
-		margin: 70px 0;
-		width: 70em;
+		margin: 80px 0; /* Create space from the banner */
 		text-align: center;
 		font-family: inherit; /* Matches the existing page font */
 	}
-
-		/* Divider line styling */
+	
 	.section-divider {
 		width: 25%;
 		height: 4px;
 		background-color: #e44c65; /* Match the color used in your theme */
 		margin: 10px auto 20px;
 	}
-
-	/* Styling the container that holds the slides */
-	.project-slide-container {
-		display: flex;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		gap: 15px;
+	
+	/* Styling for the grid container */
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust width for responsiveness */
+		gap: 20px; /* Space between grid items */
+		justify-content: center; /* Center-align items */
 		padding: 10px;
+		position: relative; /* Required for positioning */
 	}
-
-	/* Styling individual slide containers */
-	.slide {
-		flex: 0 0 auto; /* Allow slides to take their natural width */
-		scroll-snap-align: start;
-		background-color: #282c34; /* Matches the portfolio's theme */
-		border-radius: 8px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		color: #ffffff; /* White text for contrast */
-		font-family: inherit; /* Matches the existing page font */
-		position: relative; /* Position relative to control the flip effect */
-		min-width: 300px; /* Adjust as needed for visibility */
-		height: 200px; /* Adjust height as needed */
-		perspective: 1000px; /* Enable 3D space for the flip effect */
-	}
-
-	/* Flip card inner container */
-	.flip-card-inner {
-		position: relative;
+	
+	/* Styling individual flashcards */
+	.project-card {
+		position: relative; /* Position relative to enable absolute positioning of child elements */
 		width: 100%;
-		height: 100%;
-		transition: transform 0.6s;
-		transform-style: preserve-3d;
+		height: 250px; /* Fixed height */
+		perspective: 1000px; /* Add perspective for 3D effect */
 	}
-
-	/* Flip card front and back */
-	.flip-card-front,
-	.flip-card-back {
+	
+	.project-card .card-front,
+	.project-card .card-back {
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		backface-visibility: hidden;
+		backface-visibility: hidden; /* Hides the back side when rotated */
+		-webkit-backface-visibility: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 15px;
+		text-align: center;
+		overflow-wrap: anywhere; /* Prevents text overflow */
+		border-radius: 12px; /* Slightly rounded corners */
+		transition: transform 1s; /* Smooth rotation and shadow transition */
 	}
-
-	/* Flip card back should be hidden initially */
-	.flip-card-back {
-		background-color: #282c34;
-		color: #ffffff;
-		transform: rotateY(180deg);
-		flex-direction: column; /* Arrange text and button in column */
-		justify-content: center; /* Center content vertically */
+	
+	/* Card front side styling */
+	.project-card .card-front {
+		background-color: #282c34; /* Matches the front side color */
+		z-index: 2; /* Ensure it is on top */
 	}
-
-	/* Flip card front styling */
-	.flip-card-front {
-		background-color: #282c34;
+	
+	/* Card back side styling */
+	.project-card .card-back {
+		background-color: #333; /* Slightly different color for contrast */
+		transform: rotateY(180deg); /* Rotates the back side */
+		z-index: 1; /* Ensure it is behind the front side */
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 20px; /* Padding for the back side */
 	}
-
-	/* Add flip effect on hover */
-	.slide:hover .flip-card-inner {
-		transform: rotateY(180deg);
+	
+	/* Card rotation on hover */
+	.project-card:hover .card-front {
+		transform: rotateY(180deg); /* Rotate the front side */
 	}
-
-	/* Ensure the headings are easily readable */
-	.slide h3 {
-		font-size: 1.2em; /* Adjust font size as needed */
-		margin: 0;
+	
+	.project-card:hover .card-back {
+		transform: rotateY(0deg); /* Reset rotation of the back side */
+	}
+	
+	/* Ensure headings are readable */
+	.project-card h3 {
+		font-size: 1.5em; /* Adjust size as needed */
+		margin-bottom: 10px;
 		color: #e5edef; /* Matching the theme color */
 	}
-
+	
 	/* Paragraph text color */
-	.flip-card-back p {
-		font-size: 0.9em; /* Adjust font size as needed */
-		margin: 0;
+	.project-card p {
+		font-size: 1em; /* Adjust size as needed */
+		margin-bottom: 15px;
 		color: #dcdcdc; /* Light grey for readability */
-		text-align: center; /* Center align text */
-		margin-bottom: 20px; /* Space above the button */
 	}
-
-/* Style the project links */
-	.flip-card-back a {
-		display: inline-block;
+	
+	/* Style the project link */
+	.project-card a {
 		text-decoration: none;
-		color: #ffffff; /* White text */
-		background-color: #e44c65; /* Matching the theme color */
+		color: #e44c65; /* Matching the theme color */
+		font-weight: bold;
 		padding: 10px 20px;
 		border-radius: 5px;
-		font-weight: bold;
-		text-align: center;
+		background-color: #ffffff; /* White background for the button */
+		display: inline-block;
+		margin-top: auto; /* Pushes the link to the bottom */
 	}
-
+	
 
 /* Row */
 
