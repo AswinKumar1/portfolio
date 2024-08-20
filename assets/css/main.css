@@ -1,5 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 
 /*
 	Landed by HTML5 UP
@@ -679,7 +680,7 @@ input, select, textarea {
 		}
 
 		.certification-icon {
-			display: block; /* Ensures the image is a block element */
+			display: flex; /* Ensures the image is a block element */
 			margin: 0 auto; /* Centers the image horizontally */
 			width: 280px; /* Adjust width as needed */
 			height: 150px; /* Maintains aspect ratio */
@@ -702,6 +703,117 @@ input, select, textarea {
 				height: calc(100vh - 50px); /* Adjust for smaller screens */
 			}
 		}
+
+/* Projects */
+
+	.projects {
+		margin: 70px 0;
+		width: 70em;
+		text-align: center;
+		font-family: inherit; /* Matches the existing page font */
+	}
+
+		/* Divider line styling */
+	.section-divider {
+		width: 25%;
+		height: 4px;
+		background-color: #e44c65; /* Match the color used in your theme */
+		margin: 10px auto 20px;
+	}
+
+	/* Styling the container that holds the slides */
+	.project-slide-container {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		gap: 15px;
+		padding: 10px;
+	}
+
+	/* Styling individual slide containers */
+	.slide {
+		flex: 0 0 auto; /* Allow slides to take their natural width */
+		scroll-snap-align: start;
+		background-color: #282c34; /* Matches the portfolio's theme */
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		color: #ffffff; /* White text for contrast */
+		font-family: inherit; /* Matches the existing page font */
+		position: relative; /* Position relative to control the flip effect */
+		min-width: 300px; /* Adjust as needed for visibility */
+		height: 200px; /* Adjust height as needed */
+		perspective: 1000px; /* Enable 3D space for the flip effect */
+	}
+
+	/* Flip card inner container */
+	.flip-card-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transition: transform 0.6s;
+		transform-style: preserve-3d;
+	}
+
+	/* Flip card front and back */
+	.flip-card-front,
+	.flip-card-back {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 15px;
+	}
+
+	/* Flip card back should be hidden initially */
+	.flip-card-back {
+		background-color: #282c34;
+		color: #ffffff;
+		transform: rotateY(180deg);
+		flex-direction: column; /* Arrange text and button in column */
+		justify-content: center; /* Center content vertically */
+	}
+
+	/* Flip card front styling */
+	.flip-card-front {
+		background-color: #282c34;
+	}
+
+	/* Add flip effect on hover */
+	.slide:hover .flip-card-inner {
+		transform: rotateY(180deg);
+	}
+
+	/* Ensure the headings are easily readable */
+	.slide h3 {
+		font-size: 1.2em; /* Adjust font size as needed */
+		margin: 0;
+		color: #e5edef; /* Matching the theme color */
+	}
+
+	/* Paragraph text color */
+	.flip-card-back p {
+		font-size: 0.9em; /* Adjust font size as needed */
+		margin: 0;
+		color: #dcdcdc; /* Light grey for readability */
+		text-align: center; /* Center align text */
+		margin-bottom: 20px; /* Space above the button */
+	}
+
+/* Style the project links */
+	.flip-card-back a {
+		display: inline-block;
+		text-decoration: none;
+		color: #ffffff; /* White text */
+		background-color: #e44c65; /* Matching the theme color */
+		padding: 10px 20px;
+		border-radius: 5px;
+		font-weight: bold;
+		text-align: center;
+	}
+
 
 /* Row */
 
@@ -3391,10 +3503,8 @@ input, select, textarea {
 				width: 1em;
 			}
 
-	body.landing .dropotron.level-0 {
-		margin-top: 0;
-	}
-
+			
+			
 /* Header */
 
 	#page-wrapper {
