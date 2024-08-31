@@ -1,66 +1,226 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-    <title>Aswin Kumar J - Portfolio</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aswin Kumar J - AI & Robotics Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .bg-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .project-card {
+            perspective: 1000px;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .project-card:hover {
+            transform: rotateY(180deg);
+        }
+        .project-card-front, .project-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        .project-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .skill-bar {
+            transition: width 1s ease-out;
+        }
+    </style>
 </head>
-<body class="is-preload landing">
-    <div id="page-wrapper">
-        <!-- Header -->
-        <header id="header">
-            <h1 id="logo"><a href="index.html">Aswin Kumar J</a></h1>
-            <nav id="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html" class="button primary">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Banner -->
-        <section id="banner">
-            <div class="content">
-                <header>
-                    <h2>Welcome to my Professional Portfolio</h2>
-                    <p>Master’s in Information Systems with a focus on Artificial Intelligence. Proficient in Python, LLM, Docker, Kubernetes, and more.</p>
-                </header>
-                <span class="image"><img src="images/Aswin_kumar.jpeg" alt="Aswin Kumar J" /></span>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-gray-500 text-lg">Aswin Kumar J</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
+                    <a href="#about" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">About</a>
+                    <a href="#skills" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Skills</a>
+                    <a href="#projects" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Projects</a>
+                    <a href="#contact" class="py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300">Contact Me</a>
+                </div>
             </div>
-            <a href="#one" class="goto-next scrolly">Next</a>
-        </section>
+        </div>
+    </nav>
 
-        <!-- One -->
-        <section id="one" class="spotlight style1 bottom">
-            <span class="image fit main"><img src="images/OCI_certificate.jpg" alt="" /></span>
-            <div class="content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4 col-12-medium">
-                            <header>
-                                <h2>Professional Summary</h2>
-                                <p>Skilled in Python, LLM, Machine Learning, and Full-Stack Development with a strong background in SQL and AWS.</p>
-                            </header>
+    <header class="bg-gradient text-white min-h-screen flex items-center">
+        <div class="container mx-auto px-4 py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeInUp">Aswin Kumar J</h1>
+                    <h2 class="text-2xl md:text-3xl mb-6 animate-fadeInUp">AI & Robotics Engineer</h2>
+                    <p class="text-lg mb-8 animate-fadeInUp">Mastering AI, Robotics, and Full-Stack Development</p>
+                    <a href="#contact" class="bg-white text-blue-500 hover:bg-blue-100 text-lg font-bold py-2 px-4 rounded-full transition duration-300 animate-fadeInUp">Get In Touch</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="/images/Aswin_kumar.jpeg" alt="Aswin Kumar J" class="rounded-full shadow-2xl animate-fadeInUp">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">About Me</h2>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0 animate-fadeInUp">
+                    <h3 class="text-2xl font-semibold mb-4">Professional Summary</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Master's in Information Systems with a focus on Artificial Intelligence. Proficient in Python, LLM, Docker, Kubernetes, and more. Skilled in Machine Learning and Full-Stack Development with a strong background in SQL and AWS.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 px-4 animate-fadeInUp">
+                    <h3 class="text-2xl font-semibold mb-4">Education</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        <strong>University of Maryland, Baltimore County</strong><br>
+                        MS in Information Systems, AI track (08/2023 – present)<br>
+                        Courses: Deep Learning, Information Extraction, Data Mining, Data Analytics for Cybersecurity & Machine Learning
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Skills & Expertise</h2>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/2 px-4 mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Technical Skills</h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-blue-700 dark:text-white">Python</span>
                         </div>
-                        <div class="col-4 col-12-medium">
-                            <h3>Skills</h3>
-                            <p>Python, AWS, Docker, PyTorch, TensorFlow, LLM, HTML5, CSS3, JavaScript, SQL, MongoDB, and more.</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar" style="width: 90%"></div>
                         </div>
-                        <div class="col-4 col-12-medium">
-                            <h3>Interests</h3>
-                            <p>Blockchain development, Quant Analysis<br>
-                            MLOps, LLMOps</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-blue-700 dark:text-white">Machine Learning</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-blue-700 dark:text-white">Docker</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-blue-700 dark:text-white">AWS</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-blue-700 dark:text-white">LLM</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-base font-medium text-blue-700 dark:text-white">SQL</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 px-4 mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Soft Skills</h3>
+                    <ul class="text-gray-600 list-disc list-inside">
+                        <li class="mb-2">Problem Solving</li>
+                        <li class="mb-2">Team Collaboration</li>
+                        <li class="mb-2">Project Management</li>
+                        <li class="mb-2">Adaptability</li>
+                        <li class="mb-2">Continuous Learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 mb-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Featured Projects</h2>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+                    <div class="project-card p-4 bg-white rounded-lg shadow-lg hover:shadow-1xl transform transition duration-500">
+                        <div class="project-card-front">
+                            <img src="images/spot.jpg.jpg" alt="Project 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-semibold mb-2">Spot Robot AI Integration</h3>
+                            <p class="text-gray-600">Developed AI integration for Spot robot using Python and ROS to perform autonomous navigation and task execution.</p>
+                        </div>
+                        <div class="project-card-back bg-gradient p-28 rounded-lg shadow-lg items-center">
+                            <p class="text-white">Technologies used: Python, ROS, OpenAI API, Machine Learning.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+                    <div class="project-card p-4 bg-white rounded-lg shadow-lg hover:shadow-1xl transform transition duration-500">
+                        <div class="project-card-front">
+                            <img src="images/Flashcard.png" alt="Project 2" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-semibold mb-2">Flashcard AI SaaS</h3>
+                            <p class="text-gray-600">Built with Next.js, RAG trained LLM and Firebase app to generate trendy flashcards, integarted with Stripe & Clerk API.</p>
+                        </div>
+                        <div class="project-card-back bg-gradient p-28 rounded-lg shadow-lg items-center">
+                            <p class="text-white">Technologies used: Next.js, Firebase, AWS EC2, Bedrock, Stripe, RAG-training LLM.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+                    <div class="project-card p-4 bg-white rounded-lg shadow-lg hover:shadow-1xl transform transition duration-500">
+                        <div class="project-card-front">
+                            <img src="/images/chatbot.png" alt="Project 3" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-semibold mb-2">AI Customer Support Chatbot</h3>
+                            <p class="text-gray-600">Developed an AI-powered chatbot for customer support with features like multi-language support and RAG using AWS Bedrock API.</p>
+                        </div>
+                        <div class="project-card-back bg-gradient p-28 rounded-lg shadow-lg items-center">
+                            <p class="text-white">Technologies used: Next.js, AWS Bedrock API, OpenAI API, Pinecone.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="#two" class="goto-next scrolly">Next</a>
-        </section>
+        </div>
+    </section>
 
+<<<<<<< HEAD
         <!-- Two -->
         <section id="two" class="spotlight style2 right">
             <span class="image fit main"><img src="images/UMBC-retriever-social-media.png" alt="" /></span>
@@ -198,33 +358,45 @@
 							<p>August 2016</p>
 						</section>
                     </div>
+=======
+    <section id="contact" class="pt-40 pb-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Me</h2>
+            <form class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                    <input type="text" id="name" class="w-full px-3 py-2 border rounded-lg" placeholder="Your Name">
+>>>>>>> be769b7 (Add final changes to the project)
                 </div>
-            </div>
-        </section>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                    <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg" placeholder="Your Email">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                    <textarea id="message" class="w-full px-3 py-2 border rounded-lg" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400 transition duration-300">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <ul class="icons">
-                <!-- <li><a href="https://twitter.com/yourprofile" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li> -->
-                <li><a href="https://www.linkedin.com/in/aswin-kumar-903b6b77/?_l=en_US" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-                <li><a href="https://github.com/AswinKumar1" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="mailto:aswinkj1@umbc.edu" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-            </ul>
-            <ul class="copyright">
-                <li>&copy; Aswin Kumar J. All rights reserved.</li>
-                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-        </footer>
-    </div>
+    <footer class="bg-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600">&copy; 2024 Aswin Kumar J. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(function(skillBar) {
+                const bounding = skillBar.getBoundingClientRect();
+                if (bounding.top < window.innerHeight && bounding.bottom > 0) {
+                    skillBar.style.width = skillBar.getAttribute('style').split(': ')[1];
+                }
+            });
+        });
+    </script>
 </body>
 </html>

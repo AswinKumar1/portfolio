@@ -720,6 +720,7 @@ input, select, textarea {
 	}
 	
 	/* Styling for the grid container */
+<<<<<<< HEAD
 	.project-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust width for responsiveness */
@@ -778,6 +779,50 @@ input, select, textarea {
 	
 	.project-card:hover .card-back {
 		transform: rotateY(0deg); /* Reset rotation of the back side */
+=======
+	.project-card {
+		position: relative;
+		perspective: 1000px;
+	}
+	
+	.project-card-front,
+	.project-card-back {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		border-radius: 0.5rem; /* Matches the rounded corners */
+		padding: 16px;
+		box-sizing: border-box;
+	}
+	
+	.project-card-front {
+		background-color: white; /* Ensure the front side has a white background */
+		z-index: 2;
+		transform: rotateY(0deg);
+	}
+	
+	.project-card-back {
+		background: linear-gradient(to right, #333, #777); /* Background color or gradient */
+		color: white; /* Text color */
+		display: flex; /* Enable Flexbox */
+		justify-content: center; /* Horizontally center the content */
+		align-items: center; /* Vertically center the content */
+		text-align: center; /* Center the text within the paragraph */
+		padding: 28px; /* Ensure padding is still applied */
+		border-radius: 0.5rem; /* Keep rounded corners */
+		box-sizing: border-box; /* Ensure padding does not affect overall size */
+	}
+	
+	.project-card:hover .project-card-front {
+		transform: rotateY(-180deg);
+	}
+	
+	.project-card:hover .project-card-back {
+		transform: rotateY(0deg);
+		z-index: 2;
+>>>>>>> be769b7 (Add final changes to the project)
 	}
 	
 	/* Ensure headings are readable */
