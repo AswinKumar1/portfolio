@@ -415,6 +415,49 @@
         </div>
     </section>
 
+    <section id="other-projects" class="py-20 mb-20">
+        <div class="container mx-auto px-4">
+            <div class="text-3xl font-bold text-center text-gray-800 mb-8"></div>
+            <!-- Removed space-y-8 and using grid instead of flex for more consistent spacing -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="p-4 bg-white rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-500 hover:shadow-2xl">
+                    <h3 class="text-xl font-semibold mb-2">NSF HDR ML Challenge - Sea Level</h3>
+                    <p class="text-gray-600 mb-4">US-level hackathon to predict the sea-level anomaly based on the 20 years of sea data from 20 coastal regions of US</p>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li>Developed a ML pipeline to collect, transform data from multiple gauge inputs and process them for training using AWS Kinesis, Athena, and S3.</li>
+                        <li>Designed and implemented Facebook's Prophet model to predict the anomalies in the sea level based on the season and trend values and make prediction for the next 10 years</li>
+                        <li>Managed a team of 3 developers for developing the model using AWS Sagemaker using Azure DevOps.</li>
+                        <li>Fine-tuned the model to bring up the prediction metrics upto 89% accuracy.</li>
+                    </ul>
+                </div>
+                <!-- Project 2 -->
+                <div class="p-4 bg-white rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-500 hover:shadow-2xl">
+                    <h3 class="text-xl font-semibold mb-2">Rare-Named Entity Recoginition</h3>
+                    <p class="text-gray-600 mb-4">A variation of NER of rarely occuring words using BERT and DistilBERT</p>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li>Utilized HuggingFace's BERT and DistilBERT model to train them on the text data collected from Amazon reviews using BeautifulSoup</li>
+                        <li>Make prediction to identify the Rarely occuring entities using DistilBERT with an accuracy of 92%</li>
+                        <li>Implemented dynamic data loading for model training using KubeFlow</li>
+                    </ul>
+                </div>
+                <!-- Project 3 -->
+                <div class="p-4 bg-white rounded-lg shadow-lg hover:scale-105 transform transition-transform duration-500 hover:shadow-2xl">
+                    <h3 class="text-xl font-semibold mb-2">Volatility Forecasting in Financial Market</h3>
+                    <p class="text-gray-600 mb-4">A comparative approach of predicting the volatility using GARCH-LSTM, SVR and Moment-1-Large model</p>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li>Developed and implemented GARCH, GARCH-LSTM, and SVR for volatility prediction of index funds based on the Yahoo Finance data for last 25 years</li>
+                        <li>Compared the results and utilized Moment-1-Large for time-series analysis of the data.</li>
+                        <li>Designed reports and dashboards to visualize the results using Matplotlib and Seaborn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="pt-40 pb-20">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Me</h2>
