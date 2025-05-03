@@ -6,6 +6,7 @@
     <title>Aswin Kumar J - AI & Robotics Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -45,8 +46,37 @@
         .skill-bar {
             transition: width 1s ease-out;
         }
+        .swiper-wrapper {
+            align-items: stretch;
+        }
     </style>
 </head>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  });
+</script>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <nav class="bg-white shadow-lg fixed w-full z-10">
         <div class="max-w-6xl mx-auto px-4">
@@ -66,7 +96,8 @@
                     <a href="#certifications" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Certificates & Fellowships</a>
                     <a href="#projects" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Projects</a>
                     <a href="resume/Aswin kumar Janakiraman - Software Engineer.pdf" target="_blank" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Resume</a>
-                    <a href="https://no-cap-ambrosia.medium.com/" target="_blank" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Blog</a>
+                    <a href="https://no-cap-ambrosia.medium.com/" target="_blank" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Blog</a> 
+                    <a href="#testimonials" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Testimonials</a>
                     <a href="#contact" class="py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300">Contact Me</a>
                 </div>
             </div>
@@ -361,7 +392,7 @@
             
     <section id="projects" class="py-20 mb-20">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Featured Projects</h2>
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Projects</h2>
             <div class="flex flex-wrap -mx-4">
                 <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
                     <div class="project-card p-4 bg-white rounded-lg shadow-lg hover:shadow-1xl transform transition duration-500">
@@ -457,6 +488,67 @@
             </div>
         </div>
     </section>
+
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-gray-800 mb-8 animate-fadeInUp">
+            What People Say
+          </h2>
+      
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide p-6 flex">
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col flex-1">
+                  <div class="flex items-center mb-4">
+                    <img
+                      src="https://media.licdn.com/dms/image/v2/D4E03AQHvQCoHP4dOuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730313023100?e=2147483647&v=beta&t=Ng6jpA5QXFnnziJF0EMiDmyBRLpgNU2Vwcz0Z4M41yI"
+                      alt="Samson Oni"
+                      class="w-16 h-16 rounded-full border-2 border-blue-500"
+                    />
+                    <div class="ml-4">
+                      <p class="font-semibold text-gray-800">Samson Oni, Ph.D.</p>
+                      <p class="text-sm text-blue-500">Security Engineer II @ Amazon</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 italic flex-grow">
+                    “Aswin was a student in my Cloud Computing class at UMBC, and he has consistently demonstrated exceptional technical skills and a strong passion for engineering. He possesses a deep understanding of AWS services and enjoys applying them in practical projects. Aswin is a talented engineer who thrives on building and problem-solving, making him an excellent asset to any organization in need of a highly technical individual with strong cloud expertise. I would gladly recommend him again and again.”
+                  </p>
+                </div>
+              </div>
+      
+              <!-- Slide 2 -->
+              <div class="swiper-slide p-6 flex">
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col flex-1">
+                  <div class="flex items-center mb-4">
+                    <img
+                      src="https://cdn.theorg.com/998dce5c-0791-4b72-a7c0-4b4d1c648f3a_thumb.jpg"
+                      alt="Amit Soni"
+                      class="w-16 h-16 rounded-full border-2 border-blue-500"
+                    />
+                    <div class="ml-4">
+                      <p class="font-semibold text-gray-800">Amit Soni</p>
+                      <p class="text-sm text-blue-500">Product Strategy @ INSEAD</p>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 italic flex-grow">
+                    “Aswin is a highly skilled, an adaptable individual and a great learner. He knows when to stand his ground and when to admit a mistake. These are qualities of a great leader and a team player. He is always willing to collaborate and support his colleagues.
+
+                    Aswin is an original thinker, who consistently demonstrates his ability to design and develop simple solutions to complex problems. I had the pleasure of working with him on several projects, and he always received great feedback from fellow team members and customers alike. He has outstanding communication skills and never loses sight of the target, even in challenging environments.
+                    
+                    I am confident that Aswin will continue to excel in his career and always be a valuable contributor to any team he is a part of.”
+                  </p>
+                </div>
+              </div>
+      
+              <!-- add more .swiper-slide blocks as needed -->
+            </div>
+      
+            <!-- pagination dots -->
+            <div class="swiper-pagination mt-6"></div>
+          </div>
+        </div>
+      </section>
 
     <section id="contact" class="pt-40 pb-20">
         <div class="container mx-auto px-4">
