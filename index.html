@@ -49,6 +49,31 @@
         .swiper-wrapper {
             align-items: stretch;
         }
+        .cert-swiper {
+            position: relative;
+            padding-bottom: 3rem; /* adjust as needed */
+        }
+
+            /* force the pagination into view */
+        .cert-swiper .cert-pagination {
+        position: absolute;
+        width: 100%;
+        bottom: 0.5rem;
+        text-align: center;
+        }
+
+        /* style the bullets so you can actually see them */
+        .cert-swiper .swiper-pagination-bullet {
+        width: 0.75rem;
+        height: 0.75rem;
+        background-color: #cbd5e0; /* tailwind gray-300 */
+        opacity: 1;
+        margin: 0 0.25rem !important;
+        }
+
+        .cert-swiper .swiper-pagination-bullet-active {
+        background-color: #667eea; /* your brand blue */
+        }
     </style>
 </head>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -305,78 +330,114 @@
     </div>
 </section>
 
-    <section id="certifications" class="py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Certifications & Fellowships</h2>
-            <div class="flex flex-wrap -mx-6">
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">OpenCV University's TensorFlow & Keras Bootcamp</h3>
-                        <p class="text-gray-600">Completed on: March 2025</p>
-                        <p class="text-gray-600">Provider: OpenCV University</p>
-                        <img src="images/opencvuni.png" alt="Opencv certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">AWS Certified Solutions Architect - Associate</h3>
-                        <p class="text-gray-600">Completed on: February 2025</p>
-                        <p class="text-gray-600">Provider: Amazon Web Services</p>
-                        <img src="images/aws_SAA.png" alt="OCI certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">AWS Educate Machine Learning Engineer</h3>
-                        <p class="text-gray-600">Completed on: October 2024</p>
-                        <p class="text-gray-600">Provider: Amazon Web Services</p>
-                        <img src="images/aws_ML.png" alt="AWS CCP certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">AWS Certified Cloud Practitioner</h3>
-                        <p class="text-gray-600">Completed on: September 2024</p>
-                        <p class="text-gray-600">Provider: Amazon Web Services</p>
-                        <img src="images/aws_CCP.png" alt="AWS CCP certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">Oracle Cloud Infrastructure Generative AI Professional</h3>
-                        <p class="text-gray-600">Completed on: July 2024</p>
-                        <p class="text-gray-600">Provider: Oracle</p>
-                        <img src="images/OCI_certificate.png" alt="OCI certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">GSoC '16 Summer Intern</h3>
-                        <p class="text-gray-600">Completed on: July 2016</p>
-                        <p class="text-gray-600">Provider: Google Inc</p>
-                        <img src="images/gsoc_1.png" alt="GSoC certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">Certified Neo4j Practitioner</h3>
-                        <p class="text-gray-600">Completed on: October 2024</p>
-                        <p class="text-gray-600">Provider: Neo4j Academy</p>
-                        <img src="images/neo4j.png" alt="Neo4j Practitioner" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 px-4 mb-8 animate-fadeInUp">
-                    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">Headstarter SWE Fellowship '24</h3>
-                        <p class="text-gray-600">Completed on: August 2024</p>
-                        <p class="text-gray-600">Provider: Headstarter AI</p>
-                        <img src="images/headstarter.png" alt="Headstarter certificate" class="mt-4" width="200" height="200">
-                    </div>
-                </div>
-                <!-- Add more certifications as needed -->
+<section id="certifications" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Certifications &amp; Fellowships</h2>
+  
+      <!-- Swiper Carousel -->
+      <div class="swiper-container cert-swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">OpenCV University's TensorFlow &amp; Keras Bootcamp</h3>
+              <p class="text-gray-600 mb-1">Completed on: March 2025</p>
+              <p class="text-gray-600 mb-4">Provider: OpenCV University</p>
+              <img src="images/opencvuni.png" alt="OpenCV certificate" class="mt-auto" width="150">
             </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">AWS Certified Solutions Architect - Associate</h3>
+              <p class="text-gray-600 mb-1">Completed on: February 2025</p>
+              <p class="text-gray-600 mb-4">Provider: Amazon Web Services</p>
+              <img src="images/aws_SAA.png" alt="AWS SAA certificate" class="mt-auto" width="150">
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">AWS Educate Machine Learning Engineer</h3>
+              <p class="text-gray-600 mb-1">Completed on: October 2024</p>
+              <p class="text-gray-600 mb-4">Provider: Amazon Web Services</p>
+              <img src="images/aws_ML.png" alt="AWS ML certificate" class="mt-auto" width="150">
+            </div>
+          </div>
+          <!-- Slide 4 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">AWS Certified Cloud Practitioner</h3>
+              <p class="text-gray-600 mb-1">Completed on: September 2024</p>
+              <p class="text-gray-600 mb-4">Provider: Amazon Web Services</p>
+              <img src="images/aws_CCP.png" alt="AWS CCP certificate" class="mt-auto" width="150">
+            </div>
+          </div>
+          <!-- Slide 5 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">Oracle Cloud Infrastructure Generative AI Professional</h3>
+              <p class="text-gray-600 mb-1">Completed on: July 2024</p>
+              <p class="text-gray-600 mb-4">Provider: Oracle</p>
+              <img src="images/OCI_certificate.png" alt="OCI certificate" class="mt-auto" width="150">
+            </div>
+          </div>
+          <!-- Slide 6 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">GSoC '16 Summer Intern</h3>
+              <p class="text-gray-600 mb-1">Completed on: July 2016</p>
+              <p class="text-gray-600 mb-4">Provider: Google Inc</p>
+              <img src="images/gsoc_1.png" alt="GSoC certificate" class="mt-auto" width="150">
+            </div>
+          </div>
+          <!-- Slide 7 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">Certified Neo4j Practitioner</h3>
+              <p class="text-gray-600 mb-1">Completed on: October 2024</p>
+              <p class="text-gray-600 mb-4">Provider: Neo4j Academy</p>
+              <img src="images/neo4j.png" alt="Neo4j certificate" class="mt-auto" width="150">
+            </div>
+          </div>
+          <!-- Slide 8 -->
+          <div class="swiper-slide p-4">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center h-full">
+              <h3 class="text-xl font-semibold mb-2">Headstarter SWE Fellowship '24</h3>
+              <p class="text-gray-600 mb-1">Completed on: August 2024</p>
+              <p class="text-gray-600 mb-4">Provider: Headstarter AI</p>
+              <img src="images/headstarter.png" alt="Headstarter certificate" class="mt-auto" width="150">
+            </div>
+          </div>
         </div>
-    </section>
+  
+        <!-- pagination dots -->
+        <div class="swiper-pagination cert-pagination mt-6"></div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.cert-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+          delay: 1500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.cert-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          768:  { slidesPerView: 2 },
+          1024: { slidesPerView: 3 }
+        }
+      });
+    });
+  </script>
 
     <section id="work-experience" class="bg-white py-20">
         <div class="container mx-auto px-4">
