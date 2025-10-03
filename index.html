@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -65,6 +66,100 @@
             padding-bottom: 3rem; /* adjust as needed */
         }
 
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+        
+        /* Neural network nodes */
+        .neural-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Animated lines connecting nodes */
+        .neural-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform-origin: left center;
+        }
+        
+        /* Floating code snippets */
+        .code-float {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        /* Profile image container with glow effect */
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        /* Orbiting circles around profile */
+        .orbit {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        .orbit-1 {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .orbit-2 {
+            width: 140%;
+            height: 140%;
+            top: -20%;
+            left: -20%;
+            animation: rotate 30s linear infinite reverse;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .orbit-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
             /* force the pagination into view */
         .cert-swiper .cert-pagination {
         position: absolute;
@@ -111,10 +206,211 @@
         },
       },
     });
-  });
+  }),
+
+  document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('header');
+            const particlesContainer = document.getElementById('particles-container');
+            const neuralNetwork = document.getElementById('neural-network');
+            const codeSnippets = document.getElementById('code-snippets');
+            
+            // Create floating particles
+            function createParticles() {
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particlesContainer.appendChild(particle);
+                    
+                    anime({
+                        targets: particle,
+                        translateY: [
+                            { value: -50, duration: 2000 + Math.random() * 2000 },
+                            { value: 0, duration: 2000 + Math.random() * 2000 }
+                        ],
+                        translateX: [
+                            { value: Math.random() * 100 - 50, duration: 3000 + Math.random() * 2000 }
+                        ],
+                        opacity: [
+                            { value: 0.8, duration: 1000 },
+                            { value: 0.2, duration: 1000 }
+                        ],
+                        loop: true,
+                        easing: 'easeInOutQuad',
+                        delay: Math.random() * 2000
+                    });
+                }
+            }
+            
+            // Create neural network visualization
+            function createNeuralNetwork() {
+                const nodes = [];
+                const numNodes = 15;
+                
+                // Create nodes
+                for (let i = 0; i < numNodes; i++) {
+                    const node = document.createElement('div');
+                    node.className = 'neural-node';
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    node.style.left = x + '%';
+                    node.style.top = y + '%';
+                    neuralNetwork.appendChild(node);
+                    nodes.push({ element: node, x, y });
+                    
+                    anime({
+                        targets: node,
+                        scale: [0.5, 1.2, 0.5],
+                        opacity: [0.3, 0.8, 0.3],
+                        duration: 3000 + Math.random() * 2000,
+                        loop: true,
+                        easing: 'easeInOutSine',
+                        delay: Math.random() * 1000
+                    });
+                }
+                
+                // Create connecting lines
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const distance = Math.sqrt(
+                            Math.pow(nodes[i].x - nodes[j].x, 2) + 
+                            Math.pow(nodes[i].y - nodes[j].y, 2)
+                        );
+                        
+                        if (distance < 30) {
+                            const line = document.createElement('div');
+                            line.className = 'neural-line';
+                            const angle = Math.atan2(nodes[j].y - nodes[i].y, nodes[j].x - nodes[i].x);
+                            line.style.width = distance + '%';
+                            line.style.left = nodes[i].x + '%';
+                            line.style.top = nodes[i].y + '%';
+                            line.style.transform = `rotate(${angle}rad)`;
+                            neuralNetwork.appendChild(line);
+                            
+                            anime({
+                                targets: line,
+                                opacity: [0, 0.6, 0],
+                                duration: 2000,
+                                loop: true,
+                                easing: 'linear',
+                                delay: Math.random() * 2000
+                            });
+                        }
+                    }
+                }
+            }
+            
+            // Create floating code snippets
+            function createCodeSnippets() {
+                const codeTexts = [
+                    'def train_model():',
+                    'import tensorflow',
+                    'class NeuralNet():',
+                    'async function fetch()',
+                    'SELECT * FROM data',
+                    'docker build -t app',
+                    'git commit -m "feat"',
+                    'npm run deploy',
+                    'model.fit(X, y)',
+                    'const api = await',
+                    'kubectl apply -f',
+                    'loss = criterion()'
+                ];
+                
+                codeTexts.forEach((text, index) => {
+                    const code = document.createElement('div');
+                    code.className = 'code-float';
+                    code.textContent = text;
+                    code.style.left = Math.random() * 80 + 10 + '%';
+                    code.style.top = Math.random() * 80 + 10 + '%';
+                    codeSnippets.appendChild(code);
+                    
+                    anime({
+                        targets: code,
+                        translateY: [
+                            { value: -30, duration: 4000 },
+                            { value: 30, duration: 4000 }
+                        ],
+                        opacity: [0, 0.4, 0],
+                        duration: 8000,
+                        loop: true,
+                        easing: 'easeInOutSine',
+                        delay: index * 500
+                    });
+                });
+            }
+            
+            // Animate text with typing effect
+            anime.timeline()
+                .add({
+                    targets: '#nameTitle',
+                    opacity: [0, 1],
+                    translateY: [50, 0],
+                    duration: 1000,
+                    easing: 'easeOutExpo'
+                })
+                .add({
+                    targets: '#roleTitle',
+                    opacity: [0, 1],
+                    translateY: [50, 0],
+                    duration: 1000,
+                    easing: 'easeOutExpo'
+                }, '-=500')
+                .add({
+                    targets: '#tagline',
+                    opacity: [0, 1],
+                    translateY: [50, 0],
+                    duration: 1000,
+                    easing: 'easeOutExpo'
+                }, '-=500')
+                .add({
+                    targets: '#ctaButton',
+                    opacity: [0, 1],
+                    scale: [0.8, 1],
+                    duration: 800,
+                    easing: 'easeOutElastic(1, .5)'
+                }, '-=300');
+            
+            // Animate profile image
+            anime({
+                targets: '#profileImage',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                rotate: [10, 0],
+                duration: 1500,
+                easing: 'easeOutElastic(1, .5)',
+                delay: 500
+            });
+            
+            // Initialize all animations
+            createParticles();
+            createNeuralNetwork();
+            createCodeSnippets();
+            
+            // Add hover effect to CTA button
+            const ctaButton = document.getElementById('ctaButton');
+            ctaButton.addEventListener('mouseenter', function() {
+                anime({
+                    targets: this,
+                    scale: 1.1,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+            
+            ctaButton.addEventListener('mouseleave', function() {
+                anime({
+                    targets: this,
+                    scale: 1,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
 </script>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-    <nav class="bg-white shadow-lg fixed w-full z-10">
+    <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-7">
@@ -140,21 +436,36 @@
         </div>
     </nav>
 
-    <header class="bg-gradient text-white min-h-screen flex items-center">
-        <div class="container mx-auto px-4 py-32">
+    <header class="bg-gradient text-white min-h-screen flex items-center" id="header">
+        <div class="container mx-auto px-4 py-32 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeInUp">Aswin Kumar J</h1>
-                    <h2 class="text-2xl md:text-3xl mb-6 animate-fadeInUp">AI & Robotics Engineer</h2>
-                    <p class="text-lg mb-8 animate-fadeInUp">Mastering AI, Robotics, and Full-Stack Development</p>
-                    <a href="#contact" class="bg-white text-blue-500 hover:bg-blue-100 text-lg font-bold py-2 px-4 rounded-full transition duration-300 animate-fadeInUp">Get In Touch</a>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeInUp" id="nameTitle">Aswin Kumar J</h1>
+                    <h2 class="text-2xl md:text-3xl mb-6 animate-fadeInUp" id="roleTitle">AI & Robotics Engineer</h2>
+                    <p class="text-lg mb-8 animate-fadeInUp" id="tagline">Mastering AI, Robotics, and Full-Stack Development</p>
+                    <a href="#contact" class="bg-white text-blue-500 hover:bg-blue-100 text-lg font-bold py-2 px-4 rounded-full transition duration-300 animate-fadeInUp" id="ctaButton">Get In Touch</a>
                 </div>
-                <div class="md:w-1/2">
-                    <img src="images/Aswin_kumar.jpeg" alt="Aswin Kumar J" class="rounded-full shadow-2xl animate-fadeInUp">
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="profile-container">
+                        <div class="profile-glow"></div>
+                        <div class="orbit orbit-1">
+                            <div class="orbit-dot" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                        </div>
+                        <div class="orbit orbit-2">
+                            <div class="orbit-dot" style="top: 50%; right: 0; transform: translateY(-50%);"></div>
+                        </div>
+                        <img src="images/Aswin_kumar.jpeg" alt="Aswin Kumar J" class="rounded-full shadow-2xl animate-fadeInUp relative z-10" id="profileImage">
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Background animation container -->
+        <div id="particles-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+        <div id="neural-network" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+        <div id="code-snippets" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
     </header>
+
 
     <section id="about" class="py-20">
         <div class="container mx-auto px-4">
