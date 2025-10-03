@@ -23,12 +23,18 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .project-card {
+        .project-card-container {
             perspective: 1000px;
+            height: 500px;
+        }
+        .project-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
-        .project-card:hover {
+        .project-card-container:hover .project-card {
             transform: rotateY(180deg);
         }
         .project-card-front, .project-card-back {
@@ -36,12 +42,17 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
+            border-radius: 0.5rem;
         }
         .project-card-back {
             transform: rotateY(180deg);
-            display: flex;
-            align-items: center;
-            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .github-link {
+            transition: all 0.3s ease;
+        }
+        .github-link:hover {
+            transform: scale(1.05);
         }
         .skill-bar {
             transition: width 1s ease-out;
@@ -584,90 +595,287 @@
     <section id="projects" class="py-20 mb-20">
         <div class="container mx-auto px-4">
           <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Some Notable Projects</h2>
+          <p class="text-center text-gray-600 mb-8 italic">Hover over cards to see details</p>
           <div class="flex flex-wrap -mx-4">
       
-            <!-- Row 1, Card 1 -->
+            <!-- Project Card 1 -->
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105 h-full flex flex-col">
-                <img src="images/code_refactor.png"
-                     alt="Smart Code Refactoring Web App"
-                     class="w-full h-48 object-cover rounded-md mb-4">
-                <h3 class="text-xl font-semibold mb-2">Smart Code Refactoring Web App</h3>
-                <p class="text-gray-600 mb-4">Developed an AI-powered web app for refactoring code into a target language while preserving semantics using a CodeBERT transformer.</p>
-                <p class="mt-auto text-sm font-medium text-blue-500">
-                  Technologies: Python, TypeScript, AWS SageMaker, Bedrock, Lambda
-                </p>
+              <div class="project-card-container">
+                <div class="project-card">
+                  <!-- Front -->
+                  <div class="project-card-front bg-white p-6 shadow-lg flex flex-col">
+                    <img src="images/code_refactor.png"
+                         alt="Smart Code Refactoring Web App"
+                         class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Smart Code Refactoring Web App</h3>
+                    <p class="text-gray-600 flex-grow">Developed an AI-powered web app for refactoring code into a target language while preserving semantics using a CodeBERT transformer.</p>
+                  </div>
+                  <!-- Back -->
+                  <div class="project-card-back p-6 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Tech Stack</h3>
+                    <div class="space-y-3 mb-6">
+                      <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-3"></i>
+                        <span>Python & TypeScript</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-3"></i>
+                        <span>AWS SageMaker</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-3"></i>
+                        <span>AWS Bedrock</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-3"></i>
+                        <span>Lambda Functions</span>
+                      </div>
+                    </div>
+                    <a href="https://github.com/AswinKumar1/CodeWiz" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="github-link bg-white text-purple-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100">
+                      <i class="fab fa-github mr-2"></i>View Repository
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
       
-            <!-- Row 1, Card 2 -->
+            <!-- Project Card 2 -->
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105 h-full flex flex-col">
-                <img src="images/spot.jpg.jpg"
-                     alt="Spot Robot AI Integration"
-                     class="w-full h-48 object-cover rounded-md mb-4">
-                <h3 class="text-xl font-semibold mb-2">Spot Robot AI Integration</h3>
-                <p class="text-gray-600 mb-4">Built AI integration for the Spot robot with Python & ROS enabling autonomous navigation and complex task execution.</p>
-                <p class="mt-auto text-sm font-medium text-blue-500">
-                  Technologies: Python, ROS, OpenAI API, Machine Learning
-                </p>
+              <div class="project-card-container">
+                <div class="project-card">
+                  <!-- Front -->
+                  <div class="project-card-front bg-white p-6 shadow-lg flex flex-col">
+                    <img src="images/spot.jpg.jpg"
+                         alt="Spot Robot AI Integration"
+                         class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Spot Robot AI Integration</h3>
+                    <p class="text-gray-600 flex-grow">Built AI integration for the Spot robot with Python & ROS enabling autonomous navigation and complex task execution.</p>
+                  </div>
+                  <!-- Back -->
+                  <div class="project-card-back p-6 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Key Features</h3>
+                    <div class="space-y-3 mb-6">
+                      <div class="flex items-center">
+                        <i class="fas fa-robot mr-3"></i>
+                        <span>Autonomous Navigation</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-brain mr-3"></i>
+                        <span>LLM Integration</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-code mr-3"></i>
+                        <span>ROS Framework</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-microchip mr-3"></i>
+                        <span>Real-time Processing</span>
+                      </div>
+                    </div>
+                    <a href="https://github.com/AswinKumar1/SPOT_ROBOT" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="github-link bg-white text-purple-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100">
+                      <i class="fab fa-github mr-2"></i>View Repository
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
       
-            <!-- Row 1, Card 3 -->
+            <!-- Project Card 3 -->
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105 h-full flex flex-col">
-                <img src="images/chatbot.png"
-                     alt="AI Customer Support Chatbot"
-                     class="w-full h-48 object-cover rounded-md mb-4">
-                <h3 class="text-xl font-semibold mb-2">AI Customer Support Chatbot</h3>
-                <p class="text-gray-600 mb-4">Developed a multi-language, RAG-powered chatbot using AWS Bedrock for real-time customer support.</p>
-                <p class="mt-auto text-sm font-medium text-blue-500">
-                  Technologies: Next.js, AWS Bedrock API, EC2, S3, Pinecone
-                </p>
+              <div class="project-card-container">
+                <div class="project-card">
+                  <!-- Front -->
+                  <div class="project-card-front bg-white p-6 shadow-lg flex flex-col">
+                    <img src="images/chatbot.png"
+                         alt="AI Customer Support Chatbot"
+                         class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold mb-2">AI Customer Support Chatbot</h3>
+                    <p class="text-gray-600 flex-grow">Developed a multi-language, RAG-powered chatbot using AWS Bedrock for real-time customer support.</p>
+                  </div>
+                  <!-- Back -->
+                  <div class="project-card-back p-6 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Capabilities</h3>
+                    <div class="space-y-3 mb-6">
+                      <div class="flex items-center">
+                        <i class="fas fa-language mr-3"></i>
+                        <span>Multi-language Support</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-database mr-3"></i>
+                        <span>RAG Pipeline</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-cloud mr-3"></i>
+                        <span>AWS Infrastructure</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-bolt mr-3"></i>
+                        <span>Real-time Responses</span>
+                      </div>
+                    </div>
+                    <a href="https://github.com/AswinKumar1/Delta-s-AI-customer-support-chatbot" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="github-link bg-white text-purple-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100">
+                      <i class="fab fa-github mr-2"></i>View Repository
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
       
-            <!-- Row 2, Card 4 -->
+            <!-- Project Card 4 --> 
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105 h-full flex flex-col">
-                <h3 class="text-xl font-semibold mb-2">NSF HDR ML Challenge - Sea Level</h3>
-                <p class="text-gray-600 mb-4">US-level hackathon to predict sea-level anomalies from 20 years of coastal gauge data.</p>
-                <h4 class="text-lg font-semibold mb-2">Responsibilities:</h4>
-                <ul class="list-disc pl-5 text-gray-600 mb-4 flex-grow">
-                  <li>Built ML pipeline with AWS Kinesis, Athena & S3 to ingest gauge data.</li>
-                  <li>Implemented Facebook’s Prophet for seasonal & trend forecasting.</li>
-                  <li>Led a team of 3, managing code & data in Azure DevOps.</li>
-                  <li>Tuned model to achieve 89% predictive accuracy.</li>
-                </ul>
+              <div class="project-card-container">
+                <div class="project-card">
+                  <!-- Front -->
+                  <div class="project-card-front bg-white p-6 shadow-lg flex flex-col">
+                    <img src="https://miniodis-rproxy.lisn.upsaclay.fr/coda-v2-prod-public/logos/2024-08-20-1724165983/6fac0b9c92e7/NASA_Sea_Level.jpg"
+                         alt="NSF-HDR Sea Level Anamoly Challenge 2024"
+                         class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold mb-2">NSF HDR ML Challenge - Sea Level</h3>
+                    <p class="text-gray-600 mb-4">US-level hackathon to predict sea-level anomalies from 20 years of coastal gauge data.</p>
+                    <ul class="list-disc pl-5 text-gray-600 text-sm flex-grow">
+                      <li>Built ML pipeline with AWS Kinesis, Athena & S3</li>
+                      <li>Implemented Facebook's Prophet</li>
+                      <li>Led a team of 3 engineers</li>
+                      <li>Achieved 89% accuracy</li>
+                    </ul>
+                  </div>
+                  <!-- Back -->
+                  <div class="project-card-back p-6 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Project Highlights</h3>
+                    <div class="space-y-3 mb-6">
+                      <div class="flex items-center">
+                        <i class="fas fa-chart-line mr-3"></i>
+                        <span>89% Prediction Accuracy</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-users mr-3"></i>
+                        <span>Team of 3 Engineers</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-aws mr-3"></i>
+                        <span>AWS ML Pipeline</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-water mr-3"></i>
+                        <span>20 Years of Data</span>
+                      </div>
+                    </div>
+                    <a href="https://github.com/AswinKumar1/NSF-HDR-MLChallenge" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="github-link bg-white text-purple-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100">
+                      <i class="fab fa-github mr-2"></i>View Repository
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
       
-            <!-- Row 2, Card 5 -->
+            <!-- Project Card 5 --> 
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105 h-full flex flex-col">
-                <h3 class="text-xl font-semibold mb-2">Rare-Named Entity Recognition</h3>
-                <p class="text-gray-600 mb-4">NER variation focusing on rarely occurring entities using BERT & DistilBERT.</p>
-                <h4 class="text-lg font-semibold mb-2">Responsibilities:</h4>
-                <ul class="list-disc pl-5 text-gray-600 mb-4 flex-grow">
-                  <li>Trained BERT/DistilBERT on Amazon review data scraped via BeautifulSoup.</li>
-                  <li>Achieved 92% accuracy in identifying rare entities.</li>
-                  <li>Implemented Kubeflow pipelines for dynamic data loading.</li>
-                </ul>
+              <div class="project-card-container">
+                <div class="project-card">
+                  <!-- Front -->
+                  <div class="project-card-front bg-white p-6 shadow-lg flex flex-col">
+                    <img src="https://haddany.com/uploads/posts/169617528516638.phpaN3aWR"
+                         alt="Rare Named Entity Recognition"
+                         class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Rare-Named Entity Recognition</h3>
+                    <p class="text-gray-600 mb-4">NER variation focusing on rarely occurring entities using BERT & DistilBERT.</p>
+                    <ul class="list-disc pl-5 text-gray-600 text-sm flex-grow">
+                      <li>Trained BERT/DistilBERT models</li>
+                      <li>Achieved 92% accuracy</li>
+                      <li>Implemented Kubeflow pipelines</li>
+                      <li>Scraped Amazon review data</li>
+                    </ul>
+                  </div>
+                  <!-- Back -->
+                  <div class="project-card-back p-6 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Technical Stack</h3>
+                    <div class="space-y-3 mb-6">
+                      <div class="flex items-center">
+                        <i class="fas fa-brain mr-3"></i>
+                        <span>BERT & DistilBERT</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-chart-bar mr-3"></i>
+                        <span>92% Accuracy</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-project-diagram mr-3"></i>
+                        <span>Kubeflow Pipelines</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-spider mr-3"></i>
+                        <span>BeautifulSoup Scraper</span>
+                      </div>
+                    </div>
+                    <a href="https://github.com/AswinKumar1/Rare_named_entity_recognition" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="github-link bg-white text-purple-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100">
+                      <i class="fab fa-github mr-2"></i>View Repository
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
       
-            <!-- Row 2, Card 6 -->
+            <!-- Project Card 6 --> 
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105 h-full flex flex-col">
-                <h3 class="text-xl font-semibold mb-2">Volatility Forecasting in Financial Market</h3>
-                <p class="text-gray-600 mb-4">Comparative volatility forecasting using GARCH-LSTM, SVR & Moment-1-Large models.</p>
-                <h4 class="text-lg font-semibold mb-2">Responsibilities:</h4>
-                <ul class="list-disc pl-5 text-gray-600 mb-4 flex-grow">
-                  <li>Built GARCH, GARCH-LSTM & SVR pipelines on 25 years of Yahoo Finance data.</li>
-                  <li>Benchmarked models and integrated Moment-1-Large for time-series analysis.</li>
-                  <li>Visualized results in interactive dashboards with Matplotlib.</li>
-                </ul>
+              <div class="project-card-container">
+                <div class="project-card">
+                  <!-- Front -->
+                  <div class="project-card-front bg-white p-6 shadow-lg flex flex-col">
+                    <img src="https://trivehub.com/cdn/shop/articles/short_selling_1100x.png?v=1714101998"
+                         alt="Volatility Forecasting using Machine Learning models like GARCH and LSTM"
+                         class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Volatility Forecasting in Financial Market</h3>
+                    <p class="text-gray-600 mb-4">Comparative volatility forecasting using GARCH-LSTM, SVR & Moment-1-Large models.</p>
+                    <ul class="list-disc pl-5 text-gray-600 text-sm flex-grow">
+                      <li>Built GARCH, GARCH-LSTM & SVR pipelines</li>
+                      <li>25 years of Yahoo Finance data</li>
+                      <li>Interactive Matplotlib dashboards</li>
+                    </ul>
+                  </div>
+                  <!-- Back -->
+                  <div class="project-card-back p-6 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Models Used</h3>
+                    <div class="space-y-3 mb-6">
+                      <div class="flex items-center">
+                        <i class="fas fa-chart-line mr-3"></i>
+                        <span>GARCH-LSTM</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-calculator mr-3"></i>
+                        <span>Support Vector Regression</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-clock mr-3"></i>
+                        <span>Moment-1-Large</span>
+                      </div>
+                      <div class="flex items-center">
+                        <i class="fas fa-database mr-3"></i>
+                        <span>25 Years of Data</span>
+                      </div>
+                    </div>
+                    <a href="https://github.com/AswinKumar1/Volatility-Forecasting" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="github-link bg-white text-purple-600 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100">
+                      <i class="fab fa-github mr-2"></i>View Repository
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
       
