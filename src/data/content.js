@@ -1,15 +1,16 @@
 // Central place to edit your real details — swap these and the rest of the
 // site updates everywhere it's referenced.
+import { experience } from "./experience"
 
 export const profile = {
   name: 'Aswin Kumar',
-  title: 'AI/ML Systems Architect',
+  title: 'AI Engineer',
   email: 'aswin@aswinkumarj.com',
-  githubUsername: 'aswinkumar1', // used to pull the real contribution graph
+  githubUsername: 'AswinKumar1', // used to pull the real contribution graph
   socials: [
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/yourname' },
-    { label: 'GitHub', href: 'https://github.com/aswinkumar1' },
-    { label: 'Twitter', href: 'https://twitter.com/yourname' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/aswin-kumar-janakiraman' },
+    { label: 'GitHub', href: 'https://github.com/Aswinkumar1' },
+    { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=R2MFlBYAAAAJ' },
   ],
   availability: 'Available for select partnerships',
 }
@@ -17,10 +18,32 @@ export const profile = {
 export const nav = [
   { label: 'Activity', href: '#activity' },
   { label: 'Specimens', href: '#specimens' },
+  { label: 'Experience', href: '#experience' }, 
   { label: 'Publications', href: '#publications' },
   { label: 'Credentials', href: '#credentials' },
   { label: 'Connect', href: '#connect' },
 ]
+
+// All scrollable sections, including the hero (which has no nav link of
+// its own, since the wordmark already anchors there) — used to track
+// which section is in view for the mascot's per-section pose.
+export const mascotSectionIds = ['top', ...nav.map((item) => item.href.replace('#', ''))]
+
+// Maps a section id to the mascot artwork shown while that section is in
+// view. Only one custom design exists so far (the waving "hi" pose from
+// your bf), so every section points at it for now — as more arrive, drop
+// the file in public/mascots/ and point the relevant section(s) at it
+// here. Anything not listed falls back to `default`.
+export const mascotPoses = {
+  default: '/mascots/hi.svg',
+  top: '/mascots/hi.svg',
+  activity: '/mascots/gaming.svg', 
+  specimens: '/mascots/coffee.svg',
+  experience: '/mascots/music.svg',
+  publications: '/mascots/working.svg',
+  credentials: '/mascots/music.svg',
+  connect: '/mascots/bye.svg',
+}
 
 export const hero = {
   eyebrow: profile.title,
@@ -32,10 +55,12 @@ export const hero = {
   focusBadge: { label: 'CURRENT FOCUS', value: 'LLM Latency Optimization' },
 }
 
+const currentYear = new Date().getFullYear()
+
 export const activity = {
   eyebrow: 'ARTIFACT 01',
   title: 'The Generative Garden',
-  yearLabel: '2024',
+  yearLabel: `2023–${currentYear}`,
 }
 
 export const specimens = {
@@ -82,6 +107,19 @@ export const specimens = {
   ],
 }
 
+export const experienceSection = {
+  eyebrow: 'ARTIFACT 03',
+  title: 'Experience',
+  archiveLabel: 'ARCHIVE VOL. V',
+}
+
+export const publicationsSection = {
+  eyebrow: 'ARTIFACT 04',
+  title: 'Publications',
+  archiveLabel: 'ARCHIVE VOL. VI',
+}
+
+
 export const certifications = [
   { name: 'AWS Certified Solutions Architect — Professional', short: 'AWS SAA', issuer: 'AWS', year: '2024' },
   { name: 'Google Professional Machine Learning Engineer', short: 'GCP ML Engineer', issuer: 'Google Cloud', year: '2023' },
@@ -120,28 +158,28 @@ export const voices = [
     name: 'Karen Chen',
     role: 'Assistant Professor, UMBC',
     photo: null,
-    linkedin: 'https://linkedin.com/in/elena-vance',
+    linkedin: 'https://www.linkedin.com/in/karen-chen-2474751',
   },
   {
     quote: 'I had the pleasure of supervising the work of Aswin Kumar Janakiraman at CARDS at the University of Maryland, Baltimore County, where he made exceptional contributions to our projects focused on advanced AI and machine learning techniques. Aswin played a key role in optimizing large language models (LLMs) and implementing Retrieval-Augmented Generation (RAG) techniques, which significantly improved the performance of our VQA systems. His deep understanding of LLM optimization, vector embeddings, and prompt engineering was instrumental in advancing our AI-driven solutions, particularly in real-time natural language tasks and robot navigation. Aswin\'s technical expertise and ability to innovate in the AI space will make him a valuable asset to any AI/ML-focused team, and I am confident he will continue to make significant strides in the field.',
     name: 'Aryya Gangopadhyay',
     role: 'PI at CARDS, UMBC',
     photo: null,
-    linkedin: 'https://linkedin.com/in/marcus-chen',
+    linkedin: 'https://www.linkedin.com/in/aryya-gangopadhyay-09628821',
   },
   {
     quote: 'Aswin was a student in my Cloud Computing class at UMBC, and he has consistently demonstrated exceptional technical skills and a strong passion for engineering. He possesses a deep understanding of AWS services and enjoys applying them in practical projects. Aswan is a talented engineer who thrives on building and problem-solving, making him an excellent asset to any organization in need of a highly technical individual with strong cloud expertise. I would gladly recommend him again and again.',
     name: 'Samson Oni',
     role: 'Security @ Amazon',
     photo: null,
-    linkedin: 'https://linkedin.com/in/priya-raman',
+    linkedin: 'https://www.linkedin.com/in/samdwise',
   },
   {
     quote: 'Ashwin is a highly skilled, an adaptable individual and a great learner. He knows when to stand his ground and when to admit a mistake. These are qualities of a great leader and a team player. He is always willing to collaborate and support his colleagues. Ashwin is an original thinker, who consistently demonstrates his ability to design and develop simple solutions to complex problems. I had the pleasure of working with him on several projects, and he always received great feedback from fellow team members and customers alike. He has outstanding communication skills and never loses sight of the target, even in challenging environments. I am confident that Ashwin will continue to excel in his career and always be a valuable contributor to any team he is a part of.',
     name: 'Amit Soni',
     role: 'Product Strategy @ INSEAD',
     photo: null,
-    linkedin: 'https://linkedin.com/in/devon-okafor',
+    linkedin: 'https://www.linkedin.com/in/amitsoni9999/',
   },
 ]
 

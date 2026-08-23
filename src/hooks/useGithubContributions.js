@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 
-// Generates a plausible-looking placeholder year of contributions so the
-// section never appears broken while data loads, or if the API is
-// unreachable (e.g. offline preview, rate limiting).
-function placeholderYear() {
+// Generates placeholder data starting from Jan 1, 2024 to today
+function placeholderFrom2024() {
   const days = []
+  const start = new Date('2024-01-01')
   const today = new Date()
-  for (let i = 364; i >= 0; i--) {
-    const d = new Date(today)
-    d.setDate(d.getDate() - i)
+
+  for (let d = new Date(start); d <= today; d.setDate(d.getDate() + 1)) {
     const weekday = d.getDay()
-    const base = weekday === 0 || weekday === 6 ? 0.35 : 0.65
-    const count = Math.random() < base ? Math.floor(Math.random() * 9) : 0
+    const isWeekend = weekday === 0 || weekday === 6
+    // Give ~75% of weekdays and ~40% of weekends activity
+    const baseProb = isWeekend ? 0.4 : 0.75
+    const count = Math.random() < baseProb ? Math.floor(Math.random() * 8) + 1 : 0
+    
     days.push({
       date: d.toISOString().slice(0, 10),
       count,
@@ -21,31 +22,62 @@ function placeholderYear() {
   return days
 }
 
-/**
- * Pulls a year of real GitHub contribution data for `username` via a public,
- * CORS-enabled mirror of GitHub's contribution graph
- * (github-contributions-api.jogruber.de). Falls back to generated
- * placeholder data if the request fails, so the UI stays intact.
- */
 export function useGithubContributions(username) {
-  const [state, setState] = useState({ loading: true, days: placeholderYear(), total: null, isLive: false })
+  const [state, setState] = useState({
+    loading: true,
+    days: placeholderFrom2024(),
+    total: null,
+    isLive: false,
+  })
 
   useEffect(() => {
     let cancelled = false
     if (!username) return
 
-    fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
-      .then((res) => {
-        if (!res.ok) throw new Error('contribution fetch failed')
-        return res.json()
-      })
-      .then((data) => {
-        if (cancelled || !data?.contributions?.length) return
-        const total = data.total?.lastYear ?? data.contributions.reduce((s, d) => s + d.count, 0)
-        setState({ loading: false, days: data.contributions, total, isLive: true })
+    const startYear = 2024
+    const currentYear = new Date().getFullYear()
+    const years = []
+    for (let y = startYear; y <= currentYear; y++) {
+      years.push(y)
+    }
+
+    // Fetch all years concurrently (2024, 2025, 2026...)
+    Promise.all(
+      years.map((y) =>
+        fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=${y}`)
+          .then((res) => (res.ok ? res.json() : null))
+          .catch(() => null)
+      )
+    )
+      .then((results) => {
+        if (cancelled) return
+
+        const validResults = results.filter(Boolean)
+        if (!validResults.length) throw new Error('All fetches failed')
+
+        // Combine all days into one chronological array
+        const allDays = validResults
+          .flatMap((r) => r.contributions || [])
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
+
+        // Deduplicate days by date key
+        const uniqueDaysMap = new Map()
+        allDays.forEach((d) => uniqueDaysMap.set(d.date, d))
+        const combinedDays = Array.from(uniqueDaysMap.values())
+
+        const totalCount = combinedDays.reduce((sum, d) => sum + (d?.count || 0), 0)
+
+        setState({
+          loading: false,
+          days: combinedDays.length ? combinedDays : placeholderFrom2024(),
+          total: totalCount,
+          isLive: true,
+        })
       })
       .catch(() => {
-        if (!cancelled) setState((s) => ({ ...s, loading: false, isLive: false }))
+        if (!cancelled) {
+          setState((s) => ({ ...s, loading: false, isLive: false }))
+        }
       })
 
     return () => {

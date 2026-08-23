@@ -21,7 +21,7 @@ export default function Nav() {
         <a
           href="#top"
           onClick={(e) => handleClick(e, '#top')}
-          className="font-display text-2xl italic text-olive tracking-tight"
+          className="font-display text-2xl italic text-ink outline-none focus:outline-none focus:ring-0"
         >
           {profile.name}
         </a>

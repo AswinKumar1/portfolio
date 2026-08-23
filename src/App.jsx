@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import GithubActivity from './components/GithubActivity'
 import CredentialsTicker from './components/CredentialsTicker'
 import Specimens from './components/Specimens'
+import Experience from './components/Experience'
 import Publications from './components/Publications'
 import CredentialsSection from './components/CredentialsSection'
 import Footer from './components/Footer'
@@ -31,6 +32,7 @@ export default function App() {
           <GithubActivity />
           <CredentialsTicker />
           <Specimens />
+          <Experience />
           <Publications />
           <CredentialsSection />
         </main>
