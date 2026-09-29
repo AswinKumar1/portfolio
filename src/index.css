@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #F5F1E8;
+  color: #2B2119;
+  font-family: 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #47502F;
+  color: #F5F1E8;
+}
+
+/* thin, quiet scrollbar so it doesn't fight the aesthetic */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9C2AD;
+  border-radius: 999px;
+  border: 2px solid #F5F1E8;
+}
+
+:focus-visible {
+  outline: 2px solid #47502F;
+  outline-offset: 3px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* certifications marquee — smooth infinite vertical loop, pauses on hover */
+@keyframes marquee-y {
+  from { transform: translateY(0%); }
+  to { transform: translateY(-50%); }
+}
+.marquee-track {
+  animation: marquee-y var(--marquee-duration, 34s) linear infinite;
+  will-change: transform;
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
